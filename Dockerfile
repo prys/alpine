@@ -19,7 +19,7 @@ FROM alpine
 COPY --from=0 /root/consul /root/vault /root/kubectl /usr/local/bin/helm /usr/local/bin/
 RUN apk update && \
     apk upgrade && \
-    apk add curl tcpdump socat python3 jq openssl openssh bash busybox-extras && \
+    apk add curl tcpdump socat python3 jq openssl openssh bash busybox-extras iperf && \
     pip3 install --upgrade pip && \
     pip3 install awscli && \
     helm init --client-only
