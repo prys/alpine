@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine AS builder
 WORKDIR /root/
 RUN apk update && apk upgrade && apk add curl bash openssl && \
     wget https://releases.hashicorp.com/vault/1.2.2/vault_1.2.2_linux_amd64.zip && \
@@ -16,7 +16,7 @@ RUN apk update && apk upgrade && apk add curl bash openssl && \
     ./get_helm.sh
 
 FROM alpine
-COPY --from=0 /root/consul /root/vault /root/kubectl /usr/local/bin/helm /usr/local/bin/
+COPY --from=builder /root/consul /root/vault /root/kubectl /usr/local/bin/helm /usr/local/bin/
 RUN apk update && \
     apk upgrade && \
     apk add curl tcpdump socat python3 jq openssl openssh bash busybox-extras iperf && \
