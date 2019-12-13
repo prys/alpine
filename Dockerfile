@@ -1,13 +1,13 @@
 FROM alpine AS builder
 WORKDIR /root/
 RUN apk update && apk upgrade && apk add curl bash openssl && \
-    wget https://releases.hashicorp.com/vault/1.2.4/vault_1.2.4_linux_amd64.zip && \
-    wget https://releases.hashicorp.com/consul/1.6.1/consul_1.6.1_linux_amd64.zip && \
+    wget https://releases.hashicorp.com/vault/1.3.0/vault_1.3.0_linux_amd64.zip && \
+    wget https://releases.hashicorp.com/consul/1.6.2/consul_1.6.2_linux_amd64.zip && \
     curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && \
-    unzip vault_1.2.4_linux_amd64.zip && \
-    unzip consul_1.6.1_linux_amd64.zip && \
-    rm consul_1.6.1_linux_amd64.zip && \
-    rm vault_1.2.4_linux_amd64.zip && \
+    unzip vault_1.3.0_linux_amd64.zip && \
+    unzip consul_1.6.2_linux_amd64.zip && \
+    rm consul_1.6.2_linux_amd64.zip && \
+    rm vault_1.3.0_linux_amd64.zip && \
     chmod +x consul && \
     chmod +x vault && \
     chmod +x kubectl && \
