@@ -11,8 +11,8 @@ RUN apk update && apk upgrade && apk add curl bash openssl && \
     chmod +x consul && \
     chmod +x vault && \
     chmod +x kubectl && \
-    wget https://git.io/get_helm.sh && \
-    chmod +x get_helm.sh && \
+    curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 \
+    chmod 700 get_helm.sh \
     ./get_helm.sh
 
 FROM alpine
