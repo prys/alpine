@@ -13,7 +13,7 @@ FROM alpine
 COPY --from=builder /root/packer /root/kubectl /usr/local/bin/helm /usr/local/bin/
 RUN apk update && \
     apk upgrade && \
-    apk add curl tcpdump socat python3 py-pip jq openssl openssh bash busybox-extras iperf ansible && \
+    apk add curl tcpdump socat python3 py-pip jq openssl openssh bash busybox-extras iperf3 ansible && \
     pip3 install --upgrade pip && \
     pip3 install awscli
 
